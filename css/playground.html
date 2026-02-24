@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-amical-red: oklch(60% 0.5 31.5);
+
+            /* This affects saturation */
+            --color-base-chroma: 0.03;
+            /* This affects how much more saturated 
+            certain elements can get (e.g. active buttons) */
+            --color-chroma-mult: 20;
+
+            /* This affects color */
+            --color-base-hue: 130;
+
+            --color-0: oklch(0% var(--color-base-chroma) var(--color-base-hue));
+            --color-10: oklch(10% var(--color-base-chroma) var(--color-base-hue));
+            --color-15: oklch(15% var(--color-base-chroma) var(--color-base-hue));
+            --color-20: oklch(20% var(--color-base-chroma) var(--color-base-hue));
+            --color-30: oklch(30% var(--color-base-chroma) var(--color-base-hue));
+            --color-40: oklch(40% var(--color-base-chroma) var(--color-base-hue));
+            --color-50: oklch(50% var(--color-base-chroma) var(--color-base-hue));
+            --color-90: oklch(90% var(--color-base-chroma) var(--color-base-hue));
+            --color-100: oklch(100% var(--color-base-chroma) var(--color-base-hue));
+            --color-active: oklch(40% calc(var(--color-chroma-mult) * var(--color-base-chroma)) var(--color-base-hue));
+            --color-destructive: var(--color-amical-red);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            gap: 2rem;
+
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+
+            background-color: var(--color-15);
+            color: var(--color-100);
+
+            /* TODO: Find proportial typeface */
+            font-family: "Source Code Pro", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 480;
+            font-style: normal;
+            font-size: 14 px;
+        }
+
+        main {
+            margin: auto;
+            max-width: 40%;
+        }
+
+        button {
+            font-family: "Source Code Pro", monospace;
+            font-weight: 600;
+            appearance: none;
+            border-width: 2px;
+            border-style: groove;
+            border-color: #f5ffed11;
+            box-shadow:
+                inset 0 -6px 10px rgba(255, 255, 255, 0.1),
+                inset 0 -4px 6px rgba(255, 255, 255, 0.15),
+                0 6px 15px rgba(0, 0, 0, 0.2),
+                0 10px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            background-color: var(--color-90);
+            transition: all ease .1s;
+            width: fit-content;
+
+            border-radius: 4px;
+            font-size: 1rem;
+            padding: 0.2rem 2rem;
+            padding-top: 2px;
+            position: relative;
+        }
+
+        button:hover {
+            padding-bottom: 2px;
+        }
+
+        dialog-panel {
+            display: block;
+            background-color: var(--color-40);
+            max-width: 600px;
+            max-height: 250px;
+            box-sizing: border-box;
+
+            border-radius: 8px;
+            border-style: outset;
+            border-width: 2px;
+            border-color: var(--color-50);
+
+            box-shadow: inset 0 0 6px black;
+        }
+
+        dialog-panel-inner {
+            box-sizing: content-box;
+            display: flex;
+            flex-direction: column;
+            width: inherit;
+            height: inherit;
+            gap: 12px;
+            border-radius: 6px;
+            padding: 1rem 3rem 2rem 3rem;
+
+            background-image: url("velvet.png");
+
+            border-style: double;
+            border-width: 2px;
+            border-color: var(--color-50);
+        }
+
+        dialog-options {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .destructive {
+            background-color: var(--color-amical-red);
+            color: white;
+        }
+
+        .active {
+            background-color: var(--color-active);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <dialog-panel>
+            <dialog-panel-inner>
+                <p class="source-code-pro-amical">AMICAL is a collective whose main goal is to improve user-computer
+                    interconnection. Projects include designing new interfaces, software, and researching new
+                    technology.
+                </p>
+                <dialog-options>
+                    <button class="destructive">Cancel</button>
+                    <button class="active">Accept</button>
+                </dialog-options>
+            </dialog-panel-inner>
+        </dialog-panel>
+        <br>
+    </main>
+</body>
+
+</html>
